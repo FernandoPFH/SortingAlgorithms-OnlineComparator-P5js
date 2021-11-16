@@ -13,8 +13,6 @@ class AreaParaDesenho {
 
         this.alturasDosBlocos = this.embaralharAAulturaDosBlocos();
 
-        console.log(this.alturasDosBlocos);
-
         this.algoritmo(this.alturasDosBlocos);
     }
 
