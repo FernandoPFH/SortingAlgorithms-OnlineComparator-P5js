@@ -7,7 +7,7 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
     tamanhoAtualCanvas = createVector(windowWidth, windowHeight);
 
-    areaParaDesenho = new AreaParaDesenho(createVector(0,0),createVector(windowWidth, windowHeight-5),500,"TODO");
+    areaParaDesenho = new AreaParaDesenho(createVector(0,0),createVector(windowWidth, windowHeight-5),50,bubbleSort);
 }
 
 function draw() {

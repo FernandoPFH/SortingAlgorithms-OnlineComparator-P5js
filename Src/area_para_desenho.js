@@ -12,6 +12,10 @@ class AreaParaDesenho {
         this.espacamentoDasBarras = espacamentoDasBarras;
 
         this.alturasDosBlocos = this.embaralharAAulturaDosBlocos();
+
+        console.log(this.alturasDosBlocos);
+
+        this.algoritmo(this.alturasDosBlocos);
     }
 
     // Pega Um Número Inteiro Aleatório Entre Um Valor Minimo E Máximo
