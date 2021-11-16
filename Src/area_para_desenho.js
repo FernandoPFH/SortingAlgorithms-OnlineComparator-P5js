@@ -11,13 +11,36 @@ class AreaParaDesenho {
 
         this.espacamentoDasBarras = espacamentoDasBarras;
 
-        this.alturasDosBlocos = [this.numeroDeBarras];
-
-        for (let indice = 0; indice < this.numeroDeBarras; indice++) {
-            this.alturasDosBlocos[indice] = indice * this.alturaDeCadaBarra;
-        }
+        this.alturasDosBlocos = this.embaralharAAulturaDosBlocos();
     }
 
+    // Pega Um Número Inteiro Aleatório Entre Um Valor Minimo E Máximo
+    pegarInteiroAleatorio(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    // Embaralha A Lista De Alturas Dos Blocos
+    embaralharAAulturaDosBlocos() {
+        let listaOrdenada = [];
+
+        for (let indice = 0; indice < this.numeroDeBarras; indice++) {
+            listaOrdenada[indice] = Math.ceil((indice + 1) * this.alturaDeCadaBarra);
+        }
+
+        let listaEmbaralhada = [];
+
+        for (let indice = 0; indice < this.numeroDeBarras; indice++) {
+            let indiceAleatorio = this.pegarInteiroAleatorio(0,listaOrdenada.length);
+            let valorDaListaEscolhido = listaOrdenada.splice(indiceAleatorio, 1)[0];
+            listaEmbaralhada.push(valorDaListaEscolhido);
+        }
+
+        return listaEmbaralhada;
+    }
+
+    // Desenha A Área Na Qual 
     desenharArea() {
         stroke(255);
         noFill();
