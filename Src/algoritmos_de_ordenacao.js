@@ -1,3 +1,12 @@
+// Para A Continuidade De Alguma Função
+function delay(delayEmMilisegundos) {
+    return new Promise(resolve => {
+        setTimeout(() => {
+            resolve(2);
+        }, delayEmMilisegundos);
+    });
+}
+
 // Troca Dois Itens De Uma Lista Pelos Seus Índices
 async function trocarItensDaLista(lista,primeiroIndice,segundoIndice,tempoDeDelay=10) {
     await delay(tempoDeDelay);
@@ -6,15 +15,6 @@ async function trocarItensDaLista(lista,primeiroIndice,segundoIndice,tempoDeDela
 
     lista[segundoIndice] = lista[primeiroIndice];
     lista[primeiroIndice] = itemASerTrocado;
-}
-
-// Para A Continuidade De Alguma Função
-function delay(delayEmMilisegundos) {
-    return new Promise(resolve => {
-        setTimeout(() => {
-            resolve(2);
-        }, delayEmMilisegundos);
-    });
 }
 
 // Implementa O Algoritmo Bubble Sort
@@ -31,7 +31,25 @@ async function bubbleSort(listaDeAlturas,tempoDeDelay=50) {
     } while(algumItemFoiTrocado);
 }
 
-async function quickSort(listaDeAlturas,indiceInicio=0,indiceFinal=null,tempoDeDelay=0) {
+// Divide A Lista
+async function particionar(listaDeAlturas,indiceInicio,indiceFinal, tempoDeDelay) {
+    let pivo = listaDeAlturas[indiceFinal];
+    let indicePivo = indiceInicio;
+
+    for (let indiceAtual = indiceInicio; indiceAtual < indiceFinal; indiceAtual++) {
+        if (listaDeAlturas[indiceAtual] < pivo) {
+            await trocarItensDaLista(listaDeAlturas,indiceAtual,indicePivo,tempoDeDelay);
+            indicePivo++;
+        }
+    }
+
+    await trocarItensDaLista(listaDeAlturas,indicePivo,indiceFinal,tempoDeDelay);
+
+    return indicePivo;
+}
+
+// Implementa O Algoritmo Quick Sort
+async function quickSort(listaDeAlturas,indiceInicio=0,indiceFinal=null,tempoDeDelay=50) {
     if (!indiceFinal) {
         indiceFinal = listaDeAlturas.length - 1;
     }
@@ -47,18 +65,36 @@ async function quickSort(listaDeAlturas,indiceInicio=0,indiceFinal=null,tempoDeD
     ]);
 }
 
-async function particionar(listaDeAlturas,indiceInicio,indiceFinal, tempoDeDelay) {
-    let pivo = listaDeAlturas[indiceFinal];
-    let indicePivo = indiceInicio;
+async function readicionarALista(listaDeAlturas,listasDeValores,tempoDeDelay=10) {
+    let listaDeAlturasOrdenadas = []
 
-    for (let indiceAtual = indiceInicio; indiceAtual < indiceFinal; indiceAtual++) {
-        if (listaDeAlturas[indiceAtual] < pivo) {
-            await trocarItensDaLista(listaDeAlturas,indiceAtual,indicePivo,tempoDeDelay);
-            indicePivo++;
+    for (let indiceDasListasDeValor = 0; indiceDasListasDeValor < listasDeValores.length; indiceDasListasDeValor++) {
+        for (let indiceDaListaDeValor = 0; indiceDaListaDeValor < listasDeValores[indiceDasListasDeValor].length; indiceDaListaDeValor++) {
+            listaDeAlturasOrdenadas.push(listasDeValores[indiceDasListasDeValor][indiceDaListaDeValor]);
         }
     }
 
-    await trocarItensDaLista(listaDeAlturas,indicePivo,indiceFinal,tempoDeDelay);
+    for (let indice = 0; indice < listaDeAlturasOrdenadas.length; indice++) {
+        await delay(tempoDeDelay);
+        listaDeAlturas[indice] = listaDeAlturasOrdenadas[indice];
+    }
+}
 
-    return indicePivo;
+async function radixSort(listaDeAlturas,tempoDeDelay=50) {
+    let numeroMaisAltoDaLista = Math.max.apply(null, listaDeAlturas);
+
+    let numeroDeDigitosMaximo = numeroMaisAltoDaLista.toString().length;
+
+    for (let digito = 0; digito < numeroDeDigitosMaximo; digito++) {
+        let listasDeValores = [[],[],[],[],[],[],[],[],[],[]];
+
+        for (let indiceDaLista = 0; indiceDaLista < listaDeAlturas.length; indiceDaLista++) {
+
+            let valorDoDigitoASerConsiderado = Math.floor(listaDeAlturas[indiceDaLista] / 10 ** (digito)) % 10;
+
+            listasDeValores[valorDoDigitoASerConsiderado].push(listaDeAlturas[indiceDaLista]);
+        }
+
+        await readicionarALista(listaDeAlturas,listasDeValores,tempoDeDelay);
+    }
 }

@@ -5,7 +5,8 @@ var areasParaDesenho = [];
 
 var opcoesDeAlgoritmosParaTestar = {
     "Bubble Sort": bubbleSort,
-    "Quick Sort": quickSort
+    "Quick Sort": quickSort,
+    "Radix Sort": radixSort
 }
 
 // Pega Um Número Inteiro Aleatório Entre Um Valor Minimo E Máximo
