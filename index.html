@@ -3,6 +3,7 @@
         <script src="Bibliotecas/p5.min.js"></script>
         <script src="Src/area_para_desenho.js"></script>
         <script src="Src/algoritmos_de_ordenacao.js"></script>
+        <script src="Src/menu.js"></script>
         <script src="Src/main.js"></script>
         <link rel="stylesheet" href="Src/main.css">
 
@@ -10,5 +11,24 @@
     </head>
     <body>
         <main></main>
+        <div class="Menu_Principal-Background" id="Menu_Principal">
+            <div class="Menu_Principal-Conteudo">
+                <h1 class="Titulo">Comparador De Algoritmos De Ordenação</h1>
+                <div class="Grupo_Botoes">
+                    <button class="Botao_Selecionado">1 Algoritmo</button>
+                    <button style="margin-left: 10px;">2 Algoritmos</button>
+                </div>
+                <div class="Input_Algoritmo" id="Um_Algoritmo">
+                    <h2>Algoritmo:</h2>
+                    <select id="Um_Algoritmo_Opcoes"></select>
+                    <h2>Número De Blocos:</h2>
+                    <div class="Input_Numero_De_Blocos">
+                        <input type="range" id="Um_Algoritmo_Numero_De_Blocos" value="150" min="1" max="500" style="width: 100%;" onchange="mudarDisplay(this)">
+                        <h3  style="margin-left: 10px;">150</h3>
+                    </div>
+                    <button id="Um_Algoritmo_Botao" onclick="umAlgoritmoComecar()">Começar</button>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

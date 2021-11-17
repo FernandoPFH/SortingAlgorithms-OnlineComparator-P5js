@@ -7,3 +7,57 @@ canvas {
     left: 0px;
     top: 0px;
 }
+
+.Menu_Principal-Background {
+    z-index: 1;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    height: 100%;
+    width:100%;
+    display: flex;
+    background-color: rgb(128,128,128,.95);
+}
+
+.Menu_Principal-Conteudo {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.Titulo {
+    margin: auto;
+}
+
+.Grupo_Botoes {
+    margin: auto;
+    margin-top: 30px;
+}
+
+.Grupo_Botoes button {
+    font-size: 20px;
+}
+
+.Botao_Selecionado {
+    background-color: blue;
+    color: white;
+}
+
+.Input_Algoritmo {
+    display: flex;
+    flex-direction: column;
+}
+
+.Input_Algoritmo h2 {
+    text-align: center;
+}
+
+.Input_Algoritmo button {
+    width: 20%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.Input_Numero_De_Blocos {
+    display: flex;
+}
