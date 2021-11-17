@@ -45,14 +45,26 @@ function embaralharAAulturaDosBlocos(listaOrdenada) {
 }
 
 function preload() {
-    let opcoesDeAlgoritmo_select = document.getElementById("Um_Algoritmo_Opcoes");
+    let opcoesDeUmAlgoritmo_select = document.getElementById("Um_Algoritmo_Opcoes");
+    let opcoesDeDoisAlgoritmosUm_select = document.getElementById("Dois_Algoritmos_Opcoes_Um");
+    let opcoesDeDoisAlgoritmosDois_select = document.getElementById("Dois_Algoritmos_Opcoes_Dois");
 
     for (let chave in opcoesDeAlgoritmosParaTestar) {
-        let elementoDeOpcaoDeAlgoritmo = document.createElement("option");
-        elementoDeOpcaoDeAlgoritmo.value = chave;
-        elementoDeOpcaoDeAlgoritmo.text = chave;
+        let elementoDeOpcaoDeUmAlgoritmo = document.createElement("option");
+        elementoDeOpcaoDeUmAlgoritmo.value = chave;
+        elementoDeOpcaoDeUmAlgoritmo.text = chave;
+        
+        let elementoDeOpcaoDeDoisAlgoritmosUm = document.createElement("option");
+        elementoDeOpcaoDeDoisAlgoritmosUm.value = chave;
+        elementoDeOpcaoDeDoisAlgoritmosUm.text = chave;
+        
+        let elementoDeOpcaoDeDoisAlgoritmosDois = document.createElement("option");
+        elementoDeOpcaoDeDoisAlgoritmosDois.value = chave;
+        elementoDeOpcaoDeDoisAlgoritmosDois.text = chave;
 
-        opcoesDeAlgoritmo_select.appendChild(elementoDeOpcaoDeAlgoritmo);
+        opcoesDeUmAlgoritmo_select.appendChild(elementoDeOpcaoDeUmAlgoritmo);
+        opcoesDeDoisAlgoritmosUm_select.appendChild(elementoDeOpcaoDeDoisAlgoritmosUm);
+        opcoesDeDoisAlgoritmosDois_select.appendChild(elementoDeOpcaoDeDoisAlgoritmosDois);
     }
 }
 
