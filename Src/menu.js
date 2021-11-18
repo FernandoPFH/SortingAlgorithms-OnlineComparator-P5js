@@ -24,7 +24,7 @@ function umAlgoritmoComecar() {
 
     areaParaDesenhoUmAlgoritmo.algoritmo = opcoesDeAlgoritmosParaTestar[opcoesDeAlgoritmo_select.value];
 
-    let alturasOrdenadas = criarListaOrdenadaParaComparacao(numeroDeBlocos,areaParaDesenhoUmAlgoritmo.alturaDeCadaBarra);
+    let alturasOrdenadas = criarListaOrdenadaParaComparacao(numeroDeBlocos);
     let alturasEmbaralhadas = shuffle(alturasOrdenadas);
 
     areaParaDesenhoUmAlgoritmo.sincronizarAlturasDosBlocos(alturasEmbaralhadas,alturasOrdenadas);
@@ -50,7 +50,7 @@ function doisAlgoritmosComecar() {
     areaParaDesenhoAlgoritmoUm.algoritmo = opcoesDeAlgoritmosParaTestar[opcoesDeAlgoritmoUm_select.value];
     areaParaDesenhoAlgoritmoDois.algoritmo = opcoesDeAlgoritmosParaTestar[opcoesDeAlgoritmoDois_select.value];
 
-    let alturasOrdenadas = criarListaOrdenadaParaComparacao(numeroDeBlocos,areaParaDesenhoAlgoritmoUm.alturaDeCadaBarra);
+    let alturasOrdenadas = criarListaOrdenadaParaComparacao(numeroDeBlocos);
     let alturasEmbaralhadas = shuffle(alturasOrdenadas);
 
     areaParaDesenhoAlgoritmoUm.sincronizarAlturasDosBlocos(alturasEmbaralhadas,alturasOrdenadas);

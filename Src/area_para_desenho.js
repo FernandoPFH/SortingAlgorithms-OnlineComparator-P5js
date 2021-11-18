@@ -19,12 +19,20 @@ class AreaParaDesenho {
         this.alturasDosBlocos_Gabaritos = alturasDosBlocos_Gabaritos;
     }
 
+    atualizarPosicaoETamanho(novaPosicao,novoTamanho) {
+        this.posicao = novaPosicao;
+        this.tamanho = novoTamanho;
+
+        this.larguraDeCadaBarra = (this.tamanho.x - (this.numeroDeBarras - 1) * this.espacamentoDasBarras) / this.numeroDeBarras;
+        this.alturaDeCadaBarra = this.tamanho.y / this.numeroDeBarras;
+    }
+
     // Começa A Ordenar
     comecarAOrdenar() {
         this.algoritmo(this.alturasDosBlocos);
     }
 
-    // Desenha A Área Na Qual 
+    // Desenha A Área Na Qual Os Blocos Serão Desenhados
     desenharArea() {
         stroke(255);
         noFill();
@@ -38,7 +46,7 @@ class AreaParaDesenho {
                 stroke(255);
                 fill(255);
             }
-            rect(posicaoAtual,this.posicao.y + this.tamanho.y - this.alturasDosBlocos[indice],this.larguraDeCadaBarra,this.alturasDosBlocos[indice]);
+            rect(posicaoAtual,this.posicao.y + this.tamanho.y - this.alturasDosBlocos[indice] * this.alturaDeCadaBarra,this.larguraDeCadaBarra,this.alturasDosBlocos[indice] * this.alturaDeCadaBarra);
 
             posicaoAtual += this.larguraDeCadaBarra;
 

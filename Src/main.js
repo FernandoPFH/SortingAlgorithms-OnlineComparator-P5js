@@ -17,11 +17,11 @@ function pegarInteiroAleatorio(min, max) {
 }
 
 // Cria Uma Lista Ordenada Para Fazer Uma Comparação
-function criarListaOrdenadaParaComparacao(numeroDeBarras,alturaDeCadaBarra) {
+function criarListaOrdenadaParaComparacao(numeroDeBarras) {
     let listaOrdenada = [];
 
     for (let indice = 0; indice < numeroDeBarras; indice++) {
-        listaOrdenada[indice] = Math.ceil((indice + 1) * alturaDeCadaBarra);
+        listaOrdenada[indice] = Math.ceil((indice + 1));
     }
 
     return listaOrdenada;
@@ -74,7 +74,7 @@ function setup() {
 
     let areaParaDesenho = new AreaParaDesenho(createVector(0,0),createVector(windowWidth, windowHeight-5),150);
 
-    let alturasOrdenadas = criarListaOrdenadaParaComparacao(areaParaDesenho.numeroDeBarras,areaParaDesenho.alturaDeCadaBarra);
+    let alturasOrdenadas = criarListaOrdenadaParaComparacao(150);
     let alturasEmbaralhadas = shuffle(alturasOrdenadas);
 
     areaParaDesenho.sincronizarAlturasDosBlocos(alturasEmbaralhadas,alturasOrdenadas);
@@ -92,6 +92,16 @@ function draw() {
 
 // Troca O Tamanho Do Canvas Quando O Tamanho Da Tela É Mudado
 function windowResized() {
+    for (let indice = 0; indice < areasParaDesenho.length; indice++) {
+        let novaPosicaoXDaArea = (areasParaDesenho[indice].posicao.x) * (windowWidth) / (tamanhoAtualCanvas.x);
+        let novaPosicaoYDaArea = (areasParaDesenho[indice].posicao.y) * (windowHeight) / (tamanhoAtualCanvas.y);
+
+        let novoTamanhoXDaArea = (areasParaDesenho[indice].tamanho.x) * (windowWidth) / (tamanhoAtualCanvas.x);
+        let novoTamanhoYDaArea = (areasParaDesenho[indice].tamanho.y) * (windowHeight) / (tamanhoAtualCanvas.y);
+
+        areasParaDesenho[indice].atualizarPosicaoETamanho(createVector(novaPosicaoXDaArea,novaPosicaoYDaArea),createVector(novoTamanhoXDaArea,novoTamanhoYDaArea));
+    }
+    
     tamanhoAtualCanvas = createVector(windowWidth, windowHeight);
 
     resizeCanvas(windowWidth, windowHeight);
