@@ -1,5 +1,7 @@
 class AreaParaDesenho {
-    constructor(posicao, tamanho, numeroDeBarras, espacamentoDasBarras=2) {
+    constructor(nome,posicao, tamanho, numeroDeBarras, espacamentoDasBarras=2) {
+        this.nome = nome;
+
         this.posicao = posicao;
         this.tamanho = tamanho;
 
@@ -75,6 +77,12 @@ class AreaParaDesenho {
                 posicaoAtual += this.espacamentoDasBarras;
             }
         }
+
+        stroke(0,255,255);
+        fill(0,255,255);
+        textSize(this.tamanho.x*0.05);
+        textAlign(LEFT);
+        text(this.nome,this.posicao.x + 20,this.posicao.y + this.tamanho.x*0.05);
 
         if (this.terminou) {
             stroke(color(64,64,64,230));

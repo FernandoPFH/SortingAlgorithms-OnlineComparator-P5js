@@ -73,7 +73,7 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
     tamanhoAtualCanvas = createVector(windowWidth, windowHeight);
 
-    let areaParaDesenho = new AreaParaDesenho(createVector(0,0),createVector(windowWidth, windowHeight-5),150);
+    let areaParaDesenho = new AreaParaDesenho("",createVector(0,0),createVector(windowWidth, windowHeight-5),150);
 
     let alturasOrdenadas = criarListaOrdenadaParaComparacao(150);
     let alturasEmbaralhadas = shuffle(alturasOrdenadas);
@@ -98,7 +98,7 @@ function draw() {
 }
 
 function reiniciarMenuPrincipal() {
-    let areaParaDesenho = new AreaParaDesenho(createVector(0,0),createVector(windowWidth, windowHeight-5),150);
+    let areaParaDesenho = new AreaParaDesenho("",createVector(0,0),createVector(windowWidth, windowHeight-5),150);
 
     let alturasOrdenadas = criarListaOrdenadaParaComparacao(150);
     let alturasEmbaralhadas = shuffle(alturasOrdenadas);

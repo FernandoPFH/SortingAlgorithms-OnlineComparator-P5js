@@ -20,7 +20,7 @@ function umAlgoritmoComecar() {
 
     areasParaDesenho = [];
 
-    let areaParaDesenhoUmAlgoritmo = new AreaParaDesenho(createVector(0,0),createVector(windowWidth, windowHeight-5),numeroDeBlocos);
+    let areaParaDesenhoUmAlgoritmo = new AreaParaDesenho(opcoesDeAlgoritmo_select.value,createVector(0,0),createVector(windowWidth, windowHeight-5),numeroDeBlocos);
 
     areaParaDesenhoUmAlgoritmo.algoritmo = opcoesDeAlgoritmosParaTestar[opcoesDeAlgoritmo_select.value];
 
@@ -44,8 +44,8 @@ function doisAlgoritmosComecar() {
 
     areasParaDesenho = [];
 
-    let areaParaDesenhoAlgoritmoUm = new AreaParaDesenho(createVector(0,80),createVector(windowWidth/2, windowHeight-100),numeroDeBlocos);
-    let areaParaDesenhoAlgoritmoDois = new AreaParaDesenho(createVector(windowWidth/2,80),createVector(windowWidth/2, windowHeight-100),numeroDeBlocos);
+    let areaParaDesenhoAlgoritmoUm = new AreaParaDesenho(opcoesDeAlgoritmoUm_select.value,createVector(0,0),createVector(windowWidth/2, windowHeight-5),numeroDeBlocos);
+    let areaParaDesenhoAlgoritmoDois = new AreaParaDesenho(opcoesDeAlgoritmoDois_select.value,createVector(windowWidth/2,0),createVector(windowWidth/2, windowHeight-5),numeroDeBlocos);
 
     areaParaDesenhoAlgoritmoUm.algoritmo = opcoesDeAlgoritmosParaTestar[opcoesDeAlgoritmoUm_select.value];
     areaParaDesenhoAlgoritmoDois.algoritmo = opcoesDeAlgoritmosParaTestar[opcoesDeAlgoritmoDois_select.value];
