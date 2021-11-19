@@ -1,7 +1,8 @@
 // Variavel Para Reajustar Os Ponto Baseado Na Posição Da Tela
 var tamanhoAtualCanvas;
 
-var areasParaDesenho = [];
+var areasParaDesenho;
+var botao = null;
 
 var opcoesDeAlgoritmosParaTestar = {
     "Bubble Sort": bubbleSort,
@@ -79,7 +80,7 @@ function setup() {
 
     areaParaDesenho.sincronizarAlturasDosBlocos(alturasEmbaralhadas,alturasOrdenadas);
 
-    areasParaDesenho.push(areaParaDesenho);
+    areasParaDesenho = [areaParaDesenho];
 }
 
 function draw() {
@@ -88,6 +89,48 @@ function draw() {
     areasParaDesenho.forEach(areaParaDesenho => {
         areaParaDesenho.desenharArea();
     });
+
+    if (areasParaDesenho.length > 1) {
+        if (areasParaDesenho.every(areaParaDesenho => {return areaParaDesenho.terminou})) {
+            botao.desenhar();
+        }
+    }
+}
+
+function reiniciarMenuPrincipal() {
+    let areaParaDesenho = new AreaParaDesenho(createVector(0,0),createVector(windowWidth, windowHeight-5),150);
+
+    let alturasOrdenadas = criarListaOrdenadaParaComparacao(150);
+    let alturasEmbaralhadas = shuffle(alturasOrdenadas);
+
+    areaParaDesenho.sincronizarAlturasDosBlocos(alturasEmbaralhadas,alturasOrdenadas);
+
+    areasParaDesenho = [areaParaDesenho];
+
+    document.getElementById("Menu_Principal").style.display = "flex";
+}
+
+function mouseClicked() {
+    let posicaoDoMouse = createVector(mouseX,mouseY);
+    if (areasParaDesenho.length == 1) {
+        for (let indice = 0; indice < areasParaDesenho.length; indice++) {
+            if (areasParaDesenho[indice].botao) {
+                if (areasParaDesenho[indice].botao.mouseEstaEmCima(posicaoDoMouse)) {
+                    if (areasParaDesenho[indice].botao.funcaoAoClicar) {
+                        areasParaDesenho[indice].botao.funcaoAoClicar();
+                    }
+                }
+            }
+        }
+    } else {
+        if (botao) {
+            if (botao.mouseEstaEmCima(posicaoDoMouse)) {
+                if (botao.funcaoAoClicar) {
+                    botao.funcaoAoClicar();
+                }
+            }
+        }
+    }
 }
 
 // Troca O Tamanho Do Canvas Quando O Tamanho Da Tela É Mudado
@@ -100,6 +143,17 @@ function windowResized() {
         let novoTamanhoYDaArea = (areasParaDesenho[indice].tamanho.y) * (windowHeight) / (tamanhoAtualCanvas.y);
 
         areasParaDesenho[indice].atualizarPosicaoETamanho(createVector(novaPosicaoXDaArea,novaPosicaoYDaArea),createVector(novoTamanhoXDaArea,novoTamanhoYDaArea));
+    }
+    
+    if (areasParaDesenho.length > 1) {
+        if (areasParaDesenho.every(areaParaDesenho => {return areaParaDesenho.terminou})) {
+            let novaPosicaoXDoBotao = (botao.posicao.x) * (windowWidth) / (tamanhoAtualCanvas.x);
+            let novaPosicaoYDoBotao = (botao.posicao.y) * (windowHeight) / (tamanhoAtualCanvas.y);
+    
+            let novoTamanhoXDoBotao = (botao.tamanho.x) * (windowWidth) / (tamanhoAtualCanvas.x);
+            let novoTamanhoYDoBotao = (botao.tamanho.y) * (windowHeight) / (tamanhoAtualCanvas.y);
+            botao.atualizarPosicaoETamanho(createVector(novaPosicaoXDoBotao,novaPosicaoYDoBotao),createVector(novoTamanhoXDoBotao,novoTamanhoYDoBotao));
+        }
     }
     
     tamanhoAtualCanvas = createVector(windowWidth, windowHeight);

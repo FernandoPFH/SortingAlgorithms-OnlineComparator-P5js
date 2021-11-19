@@ -31,7 +31,7 @@ function umAlgoritmoComecar() {
 
     areasParaDesenho.push(areaParaDesenhoUmAlgoritmo);
 
-    areaParaDesenhoUmAlgoritmo.comecarAOrdenar();
+    areaParaDesenhoUmAlgoritmo.comecarAOrdenar(true);
 
     document.getElementById("Menu_Principal").style.display = "none";
 }
@@ -59,8 +59,10 @@ function doisAlgoritmosComecar() {
     areasParaDesenho.push(areaParaDesenhoAlgoritmoUm);
     areasParaDesenho.push(areaParaDesenhoAlgoritmoDois);
 
-    areaParaDesenhoAlgoritmoUm.comecarAOrdenar();
-    areaParaDesenhoAlgoritmoDois.comecarAOrdenar();
+    areaParaDesenhoAlgoritmoUm.comecarAOrdenar(false);
+    areaParaDesenhoAlgoritmoDois.comecarAOrdenar(false);
+
+    botao = new Botao(createVector(windowWidth/2 - windowWidth*0.05,windowHeight*0.8),createVector(windowWidth*0.1,windowHeight*0.1),10,color(0,150,0),"Reiniciar",reiniciarMenuPrincipal,30);
 
     document.getElementById("Menu_Principal").style.display = "none";
 }

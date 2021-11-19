@@ -11,6 +11,8 @@ function delay(delayEmMilisegundos) {
 async function trocarItensDaLista(lista,primeiroIndice,segundoIndice,tempoDeDelay=10) {
     await delay(tempoDeDelay);
 
+    console.log(`${primeiroIndice} <=> ${segundoIndice}`)
+
     let itemASerTrocado = lista[segundoIndice];
 
     lista[segundoIndice] = lista[primeiroIndice];
