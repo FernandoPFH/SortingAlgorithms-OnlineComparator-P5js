@@ -51,7 +51,23 @@ async function particionar(listaDeAlturas,indiceInicio,indiceFinal, tempoDeDelay
 }
 
 // Implementa O Algoritmo Quick Sort
-async function quickSort(listaDeAlturas,indiceInicio=0,indiceFinal=null,tempoDeDelay=50) {
+async function quickSortLinear(listaDeAlturas,indiceInicio=0,indiceFinal=null,tempoDeDelay=50) {
+    if (!indiceFinal) {
+        indiceFinal = listaDeAlturas.length - 1;
+    }
+
+    if (indiceInicio >= indiceFinal) {
+        return;
+    }
+
+    let indiceDeParticao = await particionar(listaDeAlturas, indiceInicio, indiceFinal,tempoDeDelay);
+
+    await quickSortLinear(listaDeAlturas, indiceInicio, indiceDeParticao - 1, tempoDeDelay);
+    await quickSortLinear(listaDeAlturas, indiceDeParticao + 1, indiceFinal, tempoDeDelay);
+}
+
+// Implementa O Algoritmo Quick Sort
+async function quickSortParalelizado(listaDeAlturas,indiceInicio=0,indiceFinal=null,tempoDeDelay=50) {
     if (!indiceFinal) {
         indiceFinal = listaDeAlturas.length - 1;
     }
@@ -62,11 +78,12 @@ async function quickSort(listaDeAlturas,indiceInicio=0,indiceFinal=null,tempoDeD
 
     let indiceDeParticao = await particionar(listaDeAlturas, indiceInicio, indiceFinal,tempoDeDelay);
     await Promise.all([
-        quickSort(listaDeAlturas, indiceInicio, indiceDeParticao - 1, tempoDeDelay),
-        quickSort(listaDeAlturas, indiceDeParticao + 1, indiceFinal, tempoDeDelay)
+        quickSortParalelizado(listaDeAlturas, indiceInicio, indiceDeParticao - 1, tempoDeDelay),
+        quickSortParalelizado(listaDeAlturas, indiceDeParticao + 1, indiceFinal, tempoDeDelay)
     ]);
 }
 
+// Recria A Lista Baseada Nos Buckets De Dados
 async function readicionarALista(listaDeAlturas,listasDeValores,tempoDeDelay=10) {
     let listaDeAlturasOrdenadas = []
 
@@ -82,6 +99,7 @@ async function readicionarALista(listaDeAlturas,listasDeValores,tempoDeDelay=10)
     }
 }
 
+// Implementa O Algoritmo Radix Sort
 async function radixSort(listaDeAlturas,tempoDeDelay=50) {
     let numeroMaisAltoDaLista = Math.max.apply(null, listaDeAlturas);
 

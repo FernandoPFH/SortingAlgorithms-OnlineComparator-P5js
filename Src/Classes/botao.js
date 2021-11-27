@@ -56,21 +56,21 @@ class Botao {
         fill(this.cor);
         rect(this.posicao.x,this.posicao.y,this.tamanho.x,this.tamanho.y,this.tamanhoBorda);
 
-        let posicaoDoTexto = createVector(
-            this.posicao.x,
-            this.posicao.y + 25
-        );
-
 
         stroke(this.corDoTexto);
         fill(this.corDoTexto);
         textSize(this.tamanhoDoTexto);
 
-        if (textWidth(this.texto) > this.tamanho.x) {
+        if (textWidth(this.texto) > this.tamanho.x * 0.9) {
             let tamanhoDoTexto = (this.tamanho.x * 0.9) * this.tamanhoDoTexto / textWidth(this.texto);
 
             textSize(tamanhoDoTexto);
         }
+
+        let posicaoDoTexto = createVector(
+            this.posicao.x,
+            this.posicao.y + this.tamanho.y / 2 - textAscent(this.texto) / 2
+        );
 
         textAlign(CENTER);
         text(this.texto,posicaoDoTexto.x,posicaoDoTexto.y,this.tamanho.x,this.tamanho.y);

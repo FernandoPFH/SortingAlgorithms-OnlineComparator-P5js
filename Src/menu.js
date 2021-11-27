@@ -1,3 +1,4 @@
+// Abri A Aba De Escolher As Opções Para Calcular Um Algoritmo
 function selecionarAreaUmAlgoritmo() {
     document.getElementById("Selecionar_Area_Um_Algoritmo").classList.add("Botao_Selecionado");
     document.getElementById("Selecionar_Area_Dois_Algoritmos").classList.remove("Botao_Selecionado");
@@ -5,6 +6,8 @@ function selecionarAreaUmAlgoritmo() {
     document.getElementById("Um_Algoritmo").classList.add("Input_Algoritmo_Selecionado");
     document.getElementById("Dois_Algoritmos").classList.remove("Input_Algoritmo_Selecionado");
 }
+
+// Abri A Aba De Escolher As Opções Para Comparar Dois Algoritmos
 function selecionarAreaDoisAlgoritmos() {
     document.getElementById("Selecionar_Area_Dois_Algoritmos").classList.add("Botao_Selecionado");
     document.getElementById("Selecionar_Area_Um_Algoritmo").classList.remove("Botao_Selecionado");
@@ -13,6 +16,7 @@ function selecionarAreaDoisAlgoritmos() {
     document.getElementById("Um_Algoritmo").classList.remove("Input_Algoritmo_Selecionado");
 }
 
+// Começa A Calcular Um Algoritmo
 function umAlgoritmoComecar() {
     let opcoesDeAlgoritmo_select = document.getElementById("Um_Algoritmo_Opcoes");
 
@@ -36,6 +40,7 @@ function umAlgoritmoComecar() {
     document.getElementById("Menu_Principal").style.display = "none";
 }
 
+// Começa A Comparar Dois Algoritmos
 function doisAlgoritmosComecar() {
     let opcoesDeAlgoritmoUm_select = document.getElementById("Dois_Algoritmos_Opcoes_Um");
     let opcoesDeAlgoritmoDois_select = document.getElementById("Dois_Algoritmos_Opcoes_Dois");
@@ -67,6 +72,7 @@ function doisAlgoritmosComecar() {
     document.getElementById("Menu_Principal").style.display = "none";
 }
 
+// Muda O Valor Perto Ao Sliders
 function mudarDisplay(elemento) {
     elemento.parentElement.children[1].innerHTML = elemento.value;
 }

@@ -6,7 +6,8 @@ var botao = null;
 
 var opcoesDeAlgoritmosParaTestar = {
     "Bubble Sort": bubbleSort,
-    "Quick Sort": quickSort,
+    "Quick Sort": quickSortLinear,
+    "Quick Sort (Paralelo)": quickSortParalelizado,
     "Radix Sort": radixSort
 }
 
